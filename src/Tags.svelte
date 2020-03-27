@@ -6,6 +6,7 @@ let tags = [];
 let tag;
 let arrelementsmatch = [];
 
+export let setTags;
 export let addKeys;
 export let maxTags;
 export let onlyUnique;
@@ -16,6 +17,7 @@ export let allowDrop;
 export let splitWith;
 export let autoComplete;
 
+$: setTags = setTags || [];
 $: addKeys = addKeys || false;
 $: maxTags = maxTags || false;
 $: onlyUnique = onlyUnique || false;
@@ -25,6 +27,11 @@ $: allowPaste = allowPaste || false;
 $: allowDrop = allowDrop || false;
 $: splitWith = splitWith || ",";
 $: autoComplete = autoComplete || false;
+
+$: {
+    tags = [...setTags];
+    setTags = [];
+}
 
 function setTag(event) {
     
